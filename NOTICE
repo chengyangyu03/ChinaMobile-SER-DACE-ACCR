@@ -1,0 +1,15 @@
+Chinese Call Speech Emotion Recognition: DACE and ACCR
+
+Project inference code, project-trained LoRA adapters, direct classifier heads
+and frozen calibration/routing parameters are released under the Apache License
+2.0. No training, validation or test audio/text data is included.
+
+The third-party Qwen2-Audio base weights are NOT redistributed in this
+repository. The setup script downloads them from the official ModelScope
+repository. Users must review and comply with that repository's license and
+terms:
+
+- Qwen/Qwen2-Audio-7B-Instruct (Alibaba Cloud), Apache License 2.0.
+
+DACE and ACCR share the same two project-trained adapters. MVEF was used only
+as a training-set out-of-fold soft teacher and is not a runtime dependency.

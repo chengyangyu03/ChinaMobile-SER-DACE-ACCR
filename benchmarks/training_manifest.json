@@ -1,0 +1,77 @@
+{
+  "protocol": "single Qwen2-Audio full-LoRA plus direct answer/audio-pooling head",
+  "test_evaluated": false,
+  "arguments": {
+    "model": "models/base/Qwen2-Audio-7B-Instruct",
+    "train_csv": "train_timesplit.csv",
+    "val_csv": "val_202506.csv",
+    "teacher_train": "private_data/train_oof_predictions.csv",
+    "output_dir": "work/train",
+    "steps": 1400,
+    "save_steps": "350,700,1050,1400",
+    "batch_size": 2,
+    "gradient_accumulation": 4,
+    "learning_rate": 7.5e-05,
+    "kd_alpha": 0.4,
+    "temperature": 2.0,
+    "lora_rank": 16,
+    "lora_alpha": 32,
+    "max_audio_seconds": 16.0,
+    "include_context": true,
+    "seed": 20260722,
+    "max_train_rows": 0,
+    "max_val_rows": 0,
+    "eval_only_adapter": null
+  },
+  "inputs": {
+    "train_csv": {
+      "path": "train_timesplit.csv",
+      "sha256": "76473d51ba6191cca03ac14f3994bbf9c56b4b7690333fe2543135876863b489"
+    },
+    "val_csv": {
+      "path": "val_202506.csv",
+      "sha256": "10338356951a0211d5efc343003998f0b842f0887bb0a1ce5c41525f68a65519"
+    },
+    "teacher_train": {
+      "path": "private_data/train_oof_predictions.csv",
+      "sha256": "3f17d2ad94f1ee75fcb17a761539dd799d04e257c658e51a672fe47f820777b6"
+    }
+  },
+  "train_rows": 22362,
+  "val_rows": 3196,
+  "teacher_coverage": {
+    "covered": 22200,
+    "missing_truth_only": 162
+  },
+  "teacher_truth_agreement_filter": {
+    "retained_correct_argmax": 19277,
+    "suppressed_wrong_argmax": 2923
+  },
+  "target_modules": [
+    "q_proj",
+    "k_proj",
+    "v_proj",
+    "o_proj",
+    "out_proj",
+    "gate_proj",
+    "up_proj",
+    "down_proj",
+    "fc1",
+    "fc2",
+    "linear"
+  ],
+  "pooling": [
+    "answer_state",
+    "audio_mean",
+    "audio_std",
+    "text_mean"
+  ],
+  "head_type": "four_pool_residual",
+  "head_block_hidden": 64,
+  "prompt": "rich v2 manual intensity calibration plus current/previous/next same-side ASR",
+  "distributed": {
+    "world_size": 4,
+    "global_micro_batch": 8
+  },
+  "publication_note": "Paths normalized for public release; input hashes, hyperparameters, sample counts and teacher agreement counts are unchanged."
+}

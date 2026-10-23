@@ -1,0 +1,63 @@
+{
+  "protocol": "chronological monthly split",
+  "labels": {
+    "A": "neutral/中性",
+    "B": "disgust or disgusted/厌恶",
+    "C": "anger or angry/愤怒"
+  },
+  "train": {
+    "period": "2024-07 through 2025-05",
+    "timestamp_min": "2024-07-01 09:37:06",
+    "timestamp_max": "2025-05-31 23:38:33",
+    "rows": 22362,
+    "dialogues": 11607,
+    "label_counts": {
+      "A": 10994,
+      "B": 8576,
+      "C": 2792
+    },
+    "label_percent": {
+      "A": 49.1638,
+      "B": 38.3508,
+      "C": 12.4855
+    },
+    "source_table_sha256": "76473d51ba6191cca03ac14f3994bbf9c56b4b7690333fe2543135876863b489"
+  },
+  "validation": {
+    "period": "2025-06",
+    "timestamp_min": "2025-06-01 00:00:42",
+    "timestamp_max": "2025-06-30 22:14:33",
+    "rows": 3196,
+    "dialogues": 1446,
+    "label_counts": {
+      "A": 1408,
+      "B": 1447,
+      "C": 341
+    },
+    "label_percent": {
+      "A": 44.0551,
+      "B": 45.2753,
+      "C": 10.6696
+    },
+    "source_table_sha256": "10338356951a0211d5efc343003998f0b842f0887bb0a1ce5c41525f68a65519"
+  },
+  "test": {
+    "status": "private, not redistributed",
+    "period": "2025-07",
+    "timestamp_min": "2025-07-01 00:00:17",
+    "timestamp_max": "2025-07-30 15:14:29",
+    "rows": 3025,
+    "dialogues": 1442,
+    "label_counts": {
+      "A": 1302,
+      "B": 1340,
+      "C": 383
+    },
+    "label_percent": {
+      "A": 43.0413,
+      "B": 44.2975,
+      "C": 12.6612
+    },
+    "source_table_sha256": "11f277869b35c6ef8d0970b30ced1fa34896c12f31b4ee6a7f95c9766039d9a0"
+  }
+}

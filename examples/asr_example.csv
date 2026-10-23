@@ -1,0 +1,4 @@
+wav_name,ASR,label
+call001_20260724090000_right_1.wav,您好我想咨询一下业务,neutral
+call001_20260724090000_right_2.wav,为什么一直没有处理,disgusted
+call001_20260724090000_right_3.wav,你们到底还管不管了,angry

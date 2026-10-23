@@ -1,0 +1,279 @@
+{
+  "protocol": "outer-4/inner-3 complete-dialogue adaptive confidence-calibrated routing from step700 primary to optional step1400 secondary",
+  "test_evaluated": false,
+  "candidate_count_per_inner_selection": 1000,
+  "raw_primary": {
+    "rows": 3196,
+    "correct": 2386,
+    "accuracy": 0.746558197747184,
+    "macro_f1": 0.7047753603815529,
+    "confusion_matrix": [
+      [
+        980,
+        332,
+        96
+      ],
+      [
+        127,
+        1175,
+        145
+      ],
+      [
+        4,
+        106,
+        231
+      ]
+    ]
+  },
+  "nested_selected": {
+    "rows": 3196,
+    "correct": 2563,
+    "accuracy": 0.8019399249061326,
+    "macro_f1": 0.7740883763625455,
+    "confusion_matrix": [
+      [
+        1161,
+        244,
+        3
+      ],
+      [
+        202,
+        1190,
+        55
+      ],
+      [
+        9,
+        120,
+        212
+      ]
+    ]
+  },
+  "folds": [
+    {
+      "fold": 0,
+      "train_rows": 2397,
+      "heldout_rows": 799,
+      "primary_C": 0.3,
+      "joint_C": 0.3,
+      "router_signal": "margin",
+      "target_call_fraction": 0.55,
+      "inner_crossfit_router_threshold": 0.6962190435016029,
+      "outer_fitted_router_threshold": 0.6977358551038068,
+      "smoother": "ba+0.00_bc+0.00_t1.00_a0.60_min5_m0.35_same_side",
+      "inner_audit": {
+        "crossfit_correct": 1920,
+        "crossfit_macro_f1": 0.7804981324178012,
+        "called_second": 1319,
+        "call_rate": 0.5502711722987067,
+        "average_model_forwards": 1.5502711722987068
+      },
+      "called_second": 422,
+      "call_rate": 0.5281602002503129,
+      "average_model_forwards": 1.528160200250313,
+      "raw_primary_correct": 600,
+      "selected_correct": 646,
+      "net": 46
+    },
+    {
+      "fold": 1,
+      "train_rows": 2397,
+      "heldout_rows": 799,
+      "primary_C": 0.3,
+      "joint_C": 3.0,
+      "router_signal": "confidence",
+      "target_call_fraction": 0.7,
+      "inner_crossfit_router_threshold": 0.8687749082246972,
+      "outer_fitted_router_threshold": 0.8701881865070643,
+      "smoother": "ba+0.00_bc+0.00_t1.00_a0.60_min5_m0.35_same_side",
+      "inner_audit": {
+        "crossfit_correct": 1899,
+        "crossfit_macro_f1": 0.7499886522631859,
+        "called_second": 1679,
+        "call_rate": 0.7004589069670422,
+        "average_model_forwards": 1.7004589069670422
+      },
+      "called_second": 526,
+      "call_rate": 0.6583229036295369,
+      "average_model_forwards": 1.658322903629537,
+      "raw_primary_correct": 629,
+      "selected_correct": 656,
+      "net": 27
+    },
+    {
+      "fold": 2,
+      "train_rows": 2397,
+      "heldout_rows": 799,
+      "primary_C": 0.03,
+      "joint_C": 0.03,
+      "router_signal": "confidence",
+      "target_call_fraction": 0.25,
+      "inner_crossfit_router_threshold": 0.6724105029984561,
+      "outer_fitted_router_threshold": 0.6797707909020291,
+      "smoother": "ba+0.00_bc+0.00_t1.00_a0.20_min3_mnone_same_side",
+      "inner_audit": {
+        "crossfit_correct": 1922,
+        "crossfit_macro_f1": 0.7721222818826927,
+        "called_second": 600,
+        "call_rate": 0.2503128911138924,
+        "average_model_forwards": 1.2503128911138923
+      },
+      "called_second": 190,
+      "call_rate": 0.23779724655819776,
+      "average_model_forwards": 1.2377972465581977,
+      "raw_primary_correct": 592,
+      "selected_correct": 643,
+      "net": 51
+    },
+    {
+      "fold": 3,
+      "train_rows": 2397,
+      "heldout_rows": 799,
+      "primary_C": 0.1,
+      "joint_C": 0.03,
+      "router_signal": "confidence",
+      "target_call_fraction": 0.4,
+      "inner_crossfit_router_threshold": 0.785744806563312,
+      "outer_fitted_router_threshold": 0.7894490301153247,
+      "smoother": "ba+0.00_bc+0.00_t1.00_a0.40_min3_m0.20_same_side",
+      "inner_audit": {
+        "crossfit_correct": 1953,
+        "crossfit_macro_f1": 0.7893776725047118,
+        "called_second": 960,
+        "call_rate": 0.4005006257822278,
+        "average_model_forwards": 1.400500625782228
+      },
+      "called_second": 349,
+      "call_rate": 0.43679599499374216,
+      "average_model_forwards": 1.436795994993742,
+      "raw_primary_correct": 565,
+      "selected_correct": 618,
+      "net": 53
+    }
+  ],
+  "called_second": 1487,
+  "call_rate": 0.46526908635794745,
+  "average_model_forwards": 1.4652690863579474,
+  "maximum_model_forwards": 2,
+  "deployment_candidate_fit_on_all_validation": {
+    "primary_C": 1.0,
+    "joint_C": 3.0,
+    "router_signal": "confidence",
+    "target_call_fraction": 0.4,
+    "crossfit_router_threshold": 0.7793521755470119,
+    "fitted_validation_router_threshold": 0.7793420477762057,
+    "smoother": {
+      "candidate": "ba+0.00_bc+0.00_t1.00_a0.40_min3_m0.20_same_side",
+      "parameters": {
+        "bias_a": 0.0,
+        "bias_c": 0.0,
+        "temperature": 1.0,
+        "alpha": 0.4,
+        "group_min": 3,
+        "max_margin": 0.2,
+        "mode": "same_side"
+      }
+    },
+    "primary_calibrator": {
+      "feature_order": [
+        "primary_logodds_A",
+        "primary_logodds_B",
+        "primary_logodds_C"
+      ],
+      "classes": [
+        0,
+        1,
+        2
+      ],
+      "coef": [
+        [
+          0.8554197305724424,
+          -0.6987187747537936,
+          -0.15670095581864218
+        ],
+        [
+          -0.16730754614432716,
+          0.3580430452253181,
+          -0.19073549908098766
+        ],
+        [
+          -0.6881121844281217,
+          0.3406757295284778,
+          0.3474364548996371
+        ]
+      ],
+      "intercept": [
+        1.4364752481982297,
+        0.7149891445908705,
+        -2.1514643927891006
+      ]
+    },
+    "joint_calibrator": {
+      "feature_order": [
+        "primary_logodds_A",
+        "primary_logodds_B",
+        "primary_logodds_C",
+        "secondary_logodds_A",
+        "secondary_logodds_B",
+        "secondary_logodds_C"
+      ],
+      "classes": [
+        0,
+        1,
+        2
+      ],
+      "coef": [
+        [
+          0.5148324658913592,
+          -0.6958884334136004,
+          0.1810559675222422,
+          0.2244108891829014,
+          0.19525651904487992,
+          -0.41966740822778287
+        ],
+        [
+          0.03361506340362056,
+          0.03479479318460098,
+          -0.06840985658822632,
+          -0.2906840033576192,
+          0.3752474827169371,
+          -0.08456347935931709
+        ],
+        [
+          -0.5484475292949741,
+          0.6610936402290015,
+          -0.112646110934024,
+          0.06627311417472516,
+          -0.5705040017618265,
+          0.5042308875871037
+        ]
+      ],
+      "intercept": [
+        1.2438058848402043,
+        0.36421563487980013,
+        -1.608021519720014
+      ]
+    },
+    "crossfit_audit": {
+      "crossfit_correct": 2570,
+      "crossfit_macro_f1": 0.7777105601446066,
+      "called_second": 1279,
+      "call_rate": 0.4001877346683354,
+      "average_model_forwards": 1.4001877346683353
+    }
+  },
+  "gate": {
+    "accuracy_at_least": 0.81,
+    "macro_f1_at_least": 0.76,
+    "worst_fold_net_at_least": 0,
+    "average_model_forwards_at_most": 2.0
+  },
+  "gate_pass": false,
+  "true_test_authorized": false,
+  "independently_deployable": true,
+  "inputs": [
+    "raw_audio",
+    "ASR"
+  ],
+  "large_model_count": 2,
+  "maximum_calibrator_trainable_parameters": 33
+}

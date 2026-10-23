@@ -1,0 +1,184 @@
+{
+  "protocol": "outer-4/inner-3 complete-dialogue class-specific joint logistic calibration of exactly two trunks",
+  "test_evaluated": false,
+  "candidate_count": 686,
+  "raw": {
+    "rows": 3196,
+    "correct": 2318,
+    "accuracy": 0.7252816020025031,
+    "macro_f1": 0.6951838165939833,
+    "confusion_matrix": [
+      [
+        847,
+        479,
+        82
+      ],
+      [
+        66,
+        1219,
+        162
+      ],
+      [
+        4,
+        85,
+        252
+      ]
+    ]
+  },
+  "nested_selected": {
+    "rows": 3196,
+    "correct": 2564,
+    "accuracy": 0.8022528160200251,
+    "macro_f1": 0.7743229153672629,
+    "confusion_matrix": [
+      [
+        1159,
+        246,
+        3
+      ],
+      [
+        199,
+        1193,
+        55
+      ],
+      [
+        10,
+        119,
+        212
+      ]
+    ]
+  },
+  "folds": [
+    {
+      "fold": 0,
+      "train_rows": 2397,
+      "heldout_rows": 799,
+      "calibrator": "C0.3_cwnone",
+      "smoother": "ba+0.00_bc+0.00_t1.00_a0.40_min3_mnone_same_side",
+      "inner_audit": {
+        "crossfit_correct": 1922,
+        "crossfit_macro_f1": 0.782521878970592
+      },
+      "raw_correct": 579,
+      "selected_correct": 646,
+      "net": 67
+    },
+    {
+      "fold": 1,
+      "train_rows": 2397,
+      "heldout_rows": 799,
+      "calibrator": "C3_cwnone",
+      "smoother": "ba+0.00_bc+0.00_t1.00_a0.60_min5_m0.35_same_side",
+      "inner_audit": {
+        "crossfit_correct": 1899,
+        "crossfit_macro_f1": 0.7499886522631859
+      },
+      "raw_correct": 613,
+      "selected_correct": 656,
+      "net": 43
+    },
+    {
+      "fold": 2,
+      "train_rows": 2397,
+      "heldout_rows": 799,
+      "calibrator": "C0.01_cwnone",
+      "smoother": "ba+0.00_bc+0.00_t1.00_a0.20_min3_mnone_same_side",
+      "inner_audit": {
+        "crossfit_correct": 1926,
+        "crossfit_macro_f1": 0.7740954287194078
+      },
+      "raw_correct": 572,
+      "selected_correct": 645,
+      "net": 73
+    },
+    {
+      "fold": 3,
+      "train_rows": 2397,
+      "heldout_rows": 799,
+      "calibrator": "C0.03_cwnone",
+      "smoother": "ba+0.00_bc+0.00_t1.00_a0.40_min3_m0.20_same_side",
+      "inner_audit": {
+        "crossfit_correct": 1953,
+        "crossfit_macro_f1": 0.7893776725047118
+      },
+      "raw_correct": 554,
+      "selected_correct": 617,
+      "net": 63
+    }
+  ],
+  "deployment_candidate_fit_on_all_validation": {
+    "feature_order": [
+      "omni_logodds_A",
+      "omni_logodds_B",
+      "omni_logodds_C",
+      "qwen2audio_logodds_A",
+      "qwen2audio_logodds_B",
+      "qwen2audio_logodds_C"
+    ],
+    "calibrator": "C0.3_cwnone",
+    "C": 0.3,
+    "class_weight": null,
+    "classes": [
+      0,
+      1,
+      2
+    ],
+    "coef": [
+      [
+        0.4548244629802368,
+        -0.6050000712793059,
+        0.15017560829904675,
+        0.3000234383961844,
+        0.10025656285130888,
+        -0.40028000124749474
+      ],
+      [
+        -0.0024703830368040403,
+        0.07996113431152108,
+        -0.07749075127471095,
+        -0.2396192686651557,
+        0.3246853378966571,
+        -0.0850660692314964
+      ],
+      [
+        -0.45235407994344046,
+        0.5250389369677951,
+        -0.07268485702435278,
+        -0.06040416973102042,
+        -0.4249419007479749,
+        0.4853460704789955
+      ]
+    ],
+    "intercept": [
+      1.3243547023918654,
+      0.41707517535381256,
+      -1.7414298777456794
+    ],
+    "smoother": {
+      "candidate": "ba+0.00_bc+0.00_t1.00_a0.40_min3_m0.20_same_side",
+      "parameters": {
+        "bias_a": 0.0,
+        "bias_c": 0.0,
+        "temperature": 1.0,
+        "alpha": 0.4,
+        "group_min": 3,
+        "max_margin": 0.2,
+        "mode": "same_side"
+      }
+    },
+    "crossfit_audit": {
+      "crossfit_correct": 2567,
+      "crossfit_macro_f1": 0.7758969745628619
+    }
+  },
+  "gate": {
+    "accuracy_at_least": 0.81,
+    "macro_f1_at_least": 0.76,
+    "worst_fold_net_at_least": 0
+  },
+  "gate_pass": false,
+  "true_test_authorized": false,
+  "model_count": 2,
+  "average_model_forwards": 2.0,
+  "calibrator_trainable_parameters": 21
+}

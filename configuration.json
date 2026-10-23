@@ -1,0 +1,5 @@
+{
+  "framework": "pytorch",
+  "task": "audio-classification",
+  "allow_remote": false
+}

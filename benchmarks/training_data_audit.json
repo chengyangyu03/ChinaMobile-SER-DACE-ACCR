@@ -1,0 +1,164 @@
+{
+  "protocol": "aggregate audit of final DACE/ACCR training provenance",
+  "splits": {
+    "train": {
+      "table": "train_timesplit.csv",
+      "sha256": "76473d51ba6191cca03ac14f3994bbf9c56b4b7690333fe2543135876863b489",
+      "rows": 22362,
+      "dialogues": 11607,
+      "source_counts": {
+        "data_1w2": 6432,
+        "data_1w5": 15930
+      },
+      "audio_directory_counts": {
+        "audio_1w2": 6432,
+        "audio_1w5": 15930
+      },
+      "label_counts": {
+        "A": 10994,
+        "B": 8576,
+        "C": 2792
+      },
+      "month_counts": {
+        "202407": 536,
+        "202408": 586,
+        "202409": 323,
+        "202410": 288,
+        "202411": 588,
+        "202412": 3536,
+        "202501": 8698,
+        "202502": 1549,
+        "202503": 2661,
+        "202504": 2198,
+        "202505": 1399
+      },
+      "duplicate_wav_names": 0,
+      "missing_audio": 0
+    },
+    "validation": {
+      "table": "val_202506.csv",
+      "sha256": "10338356951a0211d5efc343003998f0b842f0887bb0a1ce5c41525f68a65519",
+      "rows": 3196,
+      "dialogues": 1446,
+      "source_counts": {
+        "data_1w2": 3196
+      },
+      "audio_directory_counts": {
+        "audio_1w2": 3196
+      },
+      "label_counts": {
+        "A": 1408,
+        "B": 1447,
+        "C": 341
+      },
+      "month_counts": {
+        "202506": 3196
+      },
+      "duplicate_wav_names": 0,
+      "missing_audio": 0
+    },
+    "test": {
+      "table": "test_202507.csv",
+      "sha256": "11f277869b35c6ef8d0970b30ced1fa34896c12f31b4ee6a7f95c9766039d9a0",
+      "rows": 3025,
+      "dialogues": 1442,
+      "source_counts": {
+        "data_1w2": 3025
+      },
+      "audio_directory_counts": {
+        "audio_1w2": 3025
+      },
+      "label_counts": {
+        "A": 1302,
+        "B": 1340,
+        "C": 383
+      },
+      "month_counts": {
+        "202507": 3025
+      },
+      "duplicate_wav_names": 0,
+      "missing_audio": 0
+    }
+  },
+  "dialogue_overlap": {
+    "train_validation": 0,
+    "train_test": 0,
+    "validation_test": 0
+  },
+  "source_tables": {
+    "data_1w2.csv": {
+      "rows": 12737,
+      "label_counts": {
+        "disgusted": 6650,
+        "neutral": 3964,
+        "angry": 2039,
+        "happy": 84
+      },
+      "sha256": "af0d2fc25b3aeff51009feb2b7952b8fb886ae4e9dcb178cb01899cebad95d46"
+    },
+    "data_1w5.csv": {
+      "rows": 15934,
+      "label_counts": {
+        "愤怒": 1477,
+        "厌恶": 4713,
+        "中性": 9740,
+        "开心": 4
+      },
+      "sha256": "33467f6cf9a45d0a4cbeb28a27a92b4f0897fe2b5a2857ab5b013668f4a14a87"
+    }
+  },
+  "training_manifest_sha256": "e997892cf6b7f8fcaf25bddf759e3ce524898345dcc5ca829152146931a40ff7",
+  "training_input_hashes_match_manifest": {
+    "train_csv": true,
+    "val_csv": true,
+    "teacher_train": true
+  },
+  "teacher": {
+    "sha256": "3f17d2ad94f1ee75fcb17a761539dd799d04e257c658e51a672fe47f820777b6",
+    "rows": 22200,
+    "correct_argmax_with_kd": 19277,
+    "wrong_argmax_ce_only": 2923,
+    "missing_teacher_ce_only": 162,
+    "total_ce_only": 3085,
+    "kd_alpha_for_eligible_rows": 0.4,
+    "temperature": 2.0,
+    "matches_saved_training_manifest": true
+  },
+  "final_weights": [
+    {
+      "adapter": "primary",
+      "step": 700,
+      "file": "adapter_model.safetensors",
+      "sha256": "c08de732239d03f798a123ad6743b1eca7b5903dbeed52eb75fe8cfc5edb09fd",
+      "matches_modelscope_release": true
+    },
+    {
+      "adapter": "primary",
+      "step": 700,
+      "file": "classifier_head.pt",
+      "sha256": "99e2a95d85096f62ebf24c26849e450eb3375a67054f386892724c240e753fa7",
+      "matches_modelscope_release": true
+    },
+    {
+      "adapter": "secondary",
+      "step": 1400,
+      "file": "adapter_model.safetensors",
+      "sha256": "1a1234f39db14a83753f62980040dd5de5802815a09c77e01b8d81fbe6e09462",
+      "matches_modelscope_release": true
+    },
+    {
+      "adapter": "secondary",
+      "step": 1400,
+      "file": "classifier_head.pt",
+      "sha256": "2dc6c7f8cf9fc46d6694ad13174023c545c236f2b094d082077fe1995ae77bb0",
+      "matches_modelscope_release": true
+    }
+  ],
+  "audio_directory": {
+    "rows_in_merged_dataset": 28583,
+    "wav_files": 28583,
+    "missing_merged_files": 0,
+    "independent_third_training_source": false,
+    "direct_audio_directory_reads_in_final_training_table": 0
+  }
+}

@@ -1,0 +1,456 @@
+{
+  "protocol": "single- and three-GPU end-to-end inference from a prepared raw-audio+ASR manifest; wall clock includes interpreter startup and model load",
+  "created_at": "2026-07-27T14:35:00+08:00",
+  "dataset": {
+    "status": "private, not redistributed",
+    "period": "2025-07",
+    "rows": 3025,
+    "label_counts": {
+      "A": 1302,
+      "B": 1340,
+      "C": 383
+    },
+    "audio_duration_seconds": {
+      "original_total": 40056.08,
+      "effective_total_after_16s_cap": 37204.38,
+      "minimum": 5.02,
+      "median": 12.0,
+      "p90": 20.0,
+      "p95": 21.812,
+      "p99": 27.4376,
+      "maximum": 39.75,
+      "rows_truncated_by_16s_cap": 670
+    },
+    "source_table_sha256": "11f277869b35c6ef8d0970b30ced1fa34896c12f31b4ee6a7f95c9766039d9a0"
+  },
+  "hardware": {
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "gpu_memory_mib": 24576,
+    "driver": "575.64",
+    "cpu": "2 x Intel Xeon Platinum 8175M, 48 physical cores total",
+    "isolation": "the selected GPU was isolated with <=500 MiB baseline usage; the shared host CPUs were not reserved exclusively"
+  },
+  "software": {
+    "python": "3.10",
+    "pytorch": "2.6.0+cu124",
+    "transformers": "5.12.1",
+    "peft": "0.19.1",
+    "bitsandbytes": "0.46.1"
+  },
+  "profiles": {
+    "low_memory": {
+      "batch_size": 1,
+      "max_audio_seconds": 16
+    },
+    "high_throughput": {
+      "batch_size": 56,
+      "max_audio_seconds": 16,
+      "selection": "largest stable batch selected on the 64 longest private-test utterances, targeting about 20-23 GiB device memory"
+    },
+    "three_gpu_high_throughput": {
+      "num_gpus": 3,
+      "batch_size_per_gpu": 56,
+      "max_audio_seconds": 16,
+      "cpu_threads_per_worker": 16,
+      "sharding": "complete-dialogue LPT by effective audio duration after the 16-second cap"
+    }
+  },
+  "default_batch2_reference": {
+    "DACE": {
+      "correct": 2427,
+      "accuracy": 0.8023140495867769,
+      "average_model_forwards": 2.0
+    },
+    "ACCR": {
+      "correct": 2422,
+      "accuracy": 0.8006611570247933,
+      "called_second": 1196,
+      "average_model_forwards": 1.3953719008264462
+    },
+    "note": "The routing threshold is applied to floating-point probabilities. A different GPU batch size can move a few threshold-boundary rows between one and two forwards; every efficiency run therefore reports its own measured called_second and average_model_forwards."
+  },
+  "timing_boundary": {
+    "whole_process_wall_seconds": "subprocess launch through process exit; includes Python imports, input/frozen-parameter validation, processor/base/primary load, all forwards, adapter switch, calibration/smoothing, and CSV/JSON writes",
+    "internal_timing_seconds": "instrumented stages inside the inference program",
+    "storage_cache": "base weights were already present on local storage; operating-system page cache was not forcibly dropped because this is a shared host"
+  },
+  "runs": [
+    {
+      "method": "DACE",
+      "profile": "low_memory",
+      "batch_size": 1,
+      "max_audio_seconds": 16.0,
+      "rows": 3025,
+      "called_second": 3025,
+      "average_model_forwards": 2.0,
+      "correct": 2427,
+      "accuracy": 0.8023140495867769,
+      "macro_f1": 0.7673313285004356,
+      "reference_default_batch2": {
+        "correct": 2427,
+        "accuracy": 0.8023140495867769,
+        "correct_delta": 0,
+        "accuracy_delta": 0.0
+      },
+      "whole_process_wall_seconds": 4755.157453615218,
+      "whole_process_wall_hms": "1:19:15",
+      "throughput_rows_per_second": 0.6361513849978141,
+      "internal_timing_seconds": {
+        "input_and_frozen_parameter_validation": 1.3508184142410755,
+        "processor_base_primary_load": 43.204020868986845,
+        "primary_forward": 2214.809329185635,
+        "routing": 0.00020311400294303894,
+        "secondary_adapter_and_head_load": 25.673213958740234,
+        "secondary_forward": 2457.2070989385247,
+        "frozen_calibration_and_dialogue_smoothing": 0.012505851686000824,
+        "artifact_write": 0.07014814764261246,
+        "total": 4742.327338479459
+      },
+      "gpu": {
+        "name": "NVIDIA GeForce RTX 3090",
+        "driver_version": "575.64",
+        "total_memory_mib": 24576.0,
+        "baseline_device_used_mib": 15.0,
+        "peak_device_used_mib": 7277.0,
+        "peak_device_used_gib": 7.1064453125,
+        "peak_increment_over_baseline_mib": 7262.0,
+        "torch_peak_allocated_bytes": 6888544256,
+        "torch_peak_allocated_gib": 6.415456771850586,
+        "monitor_interval_seconds": 0.5,
+        "monitor_samples": 8452,
+        "peak_utilization_percent": 100.0,
+        "peak_power_w": 275.34
+      },
+      "maximum_process_resident_set_size_bytes": 18804957184,
+      "maximum_process_resident_set_size_gib": 17.51348114013672,
+      "prediction_sha256": "6c79eb58ac1e3d03d16fcbadc8e5c6ad4caec1da87947aac597e4cb7cfeea7d4",
+      "gpu_trace": "inference_efficiency_3025/dace_low_memory_gpu_trace.csv",
+      "gpu_trace_sha256": "9b2c8c16c723fedf77a79e0375d425668a21a96bc4789e7948f975a7316b0313"
+    },
+    {
+      "method": "ACCR",
+      "profile": "low_memory",
+      "batch_size": 1,
+      "max_audio_seconds": 16.0,
+      "rows": 3025,
+      "called_second": 1197,
+      "average_model_forwards": 1.3957024793388428,
+      "correct": 2423,
+      "accuracy": 0.80099173553719,
+      "macro_f1": 0.7649567984949264,
+      "reference_default_batch2": {
+        "correct": 2422,
+        "accuracy": 0.8006611570247933,
+        "correct_delta": 1,
+        "accuracy_delta": 0.00033057851239670644
+      },
+      "whole_process_wall_seconds": 3649.6898015514016,
+      "whole_process_wall_hms": "1:00:50",
+      "throughput_rows_per_second": 0.8288375627742774,
+      "internal_timing_seconds": {
+        "input_and_frozen_parameter_validation": 1.2417600527405739,
+        "processor_base_primary_load": 54.6109642572701,
+        "primary_forward": 2579.2219949774444,
+        "routing": 0.0018461309373378754,
+        "secondary_adapter_and_head_load": 28.132610578089952,
+        "secondary_forward": 970.7315295785666,
+        "frozen_calibration_and_dialogue_smoothing": 0.01119917631149292,
+        "artifact_write": 0.09363905340433121,
+        "total": 3634.0455438047647
+      },
+      "gpu": {
+        "name": "NVIDIA GeForce RTX 3090",
+        "driver_version": "575.64",
+        "total_memory_mib": 24576.0,
+        "baseline_device_used_mib": 15.0,
+        "peak_device_used_mib": 7277.0,
+        "peak_device_used_gib": 7.1064453125,
+        "peak_increment_over_baseline_mib": 7262.0,
+        "torch_peak_allocated_bytes": 6888544256,
+        "torch_peak_allocated_gib": 6.415456771850586,
+        "monitor_interval_seconds": 0.5,
+        "monitor_samples": 6439,
+        "peak_utilization_percent": 100.0,
+        "peak_power_w": 269.5
+      },
+      "maximum_process_resident_set_size_bytes": 18808430592,
+      "maximum_process_resident_set_size_gib": 17.51671600341797,
+      "prediction_sha256": "ed0c1de30c5828c4d52b5c35fa378c793386fa8be9e02f653b2c9ee0acb608e9",
+      "gpu_trace": "inference_efficiency_3025/accr_low_memory_gpu_trace.csv",
+      "gpu_trace_sha256": "6834490d9a9ea0d35679837cf8a0bd64ab18833b92e4e2013852b98a9dad3af6"
+    },
+    {
+      "method": "DACE",
+      "profile": "high_throughput",
+      "batch_size": 56,
+      "max_audio_seconds": 16.0,
+      "rows": 3025,
+      "called_second": 3025,
+      "average_model_forwards": 2.0,
+      "correct": 2427,
+      "accuracy": 0.8023140495867769,
+      "macro_f1": 0.7673313285004356,
+      "reference_default_batch2": {
+        "correct": 2427,
+        "accuracy": 0.8023140495867769,
+        "correct_delta": 0,
+        "accuracy_delta": 0.0
+      },
+      "whole_process_wall_seconds": 1939.9009906202555,
+      "whole_process_wall_hms": "0:32:20",
+      "throughput_rows_per_second": 1.5593579335370098,
+      "internal_timing_seconds": {
+        "input_and_frozen_parameter_validation": 1.193200297653675,
+        "processor_base_primary_load": 41.249331422150135,
+        "primary_forward": 931.6122912168503,
+        "routing": 7.586926221847534e-05,
+        "secondary_adapter_and_head_load": 22.880174435675144,
+        "secondary_forward": 928.8360245116055,
+        "frozen_calibration_and_dialogue_smoothing": 0.012452159076929092,
+        "artifact_write": 0.04886441305279732,
+        "total": 1925.8324143253267
+      },
+      "gpu": {
+        "name": "NVIDIA GeForce RTX 3090",
+        "driver_version": "575.64",
+        "total_memory_mib": 24576.0,
+        "baseline_device_used_mib": 15.0,
+        "peak_device_used_mib": 23043.0,
+        "peak_device_used_gib": 22.5029296875,
+        "peak_increment_over_baseline_mib": 23028.0,
+        "torch_peak_allocated_bytes": 16043936768,
+        "torch_peak_allocated_gib": 14.9420804977417,
+        "monitor_interval_seconds": 0.5,
+        "monitor_samples": 3384,
+        "peak_utilization_percent": 100.0,
+        "peak_power_w": 336.04
+      },
+      "maximum_process_resident_set_size_bytes": 18805964800,
+      "maximum_process_resident_set_size_gib": 17.514419555664062,
+      "prediction_sha256": "1bc038b9e3d9b07f4c225bcc7f213e4b50bf15e4e8304b7bf5fa321c2b99d767",
+      "gpu_trace": "inference_efficiency_3025/dace_high_throughput_gpu_trace.csv",
+      "gpu_trace_sha256": "e98516e710a27ee7407b9e8a3212ed10bd4646696cbbab00bc4fd344012639a8"
+    },
+    {
+      "method": "ACCR",
+      "profile": "high_throughput",
+      "batch_size": 56,
+      "max_audio_seconds": 16.0,
+      "rows": 3025,
+      "called_second": 1198,
+      "average_model_forwards": 1.3960330578512397,
+      "correct": 2422,
+      "accuracy": 0.8006611570247933,
+      "macro_f1": 0.7647142943034074,
+      "reference_default_batch2": {
+        "correct": 2422,
+        "accuracy": 0.8006611570247933,
+        "correct_delta": 0,
+        "accuracy_delta": 0.0
+      },
+      "whole_process_wall_seconds": 1387.4043039232492,
+      "whole_process_wall_hms": "0:23:07",
+      "throughput_rows_per_second": 2.1803305578957914,
+      "internal_timing_seconds": {
+        "input_and_frozen_parameter_validation": 1.2549073211848736,
+        "processor_base_primary_load": 38.77653358131647,
+        "primary_forward": 934.1702416017652,
+        "routing": 0.0015069060027599335,
+        "secondary_adapter_and_head_load": 23.89038660377264,
+        "secondary_forward": 377.11371367424726,
+        "frozen_calibration_and_dialogue_smoothing": 0.010903909802436829,
+        "artifact_write": 0.05285274609923363,
+        "total": 1375.2710463441908
+      },
+      "gpu": {
+        "name": "NVIDIA GeForce RTX 3090",
+        "driver_version": "575.64",
+        "total_memory_mib": 24576.0,
+        "baseline_device_used_mib": 15.0,
+        "peak_device_used_mib": 23043.0,
+        "peak_device_used_gib": 22.5029296875,
+        "peak_increment_over_baseline_mib": 23028.0,
+        "torch_peak_allocated_bytes": 15836498944,
+        "torch_peak_allocated_gib": 14.748888969421387,
+        "monitor_interval_seconds": 0.5,
+        "monitor_samples": 2414,
+        "peak_utilization_percent": 100.0,
+        "peak_power_w": 335.25
+      },
+      "maximum_process_resident_set_size_bytes": 18809614336,
+      "maximum_process_resident_set_size_gib": 17.517818450927734,
+      "prediction_sha256": "c17c17d1c26ccbec9e7e440d3142065c04db3d1a6e0f5ae09f3747005813d43a",
+      "gpu_trace": "inference_efficiency_3025/accr_high_throughput_gpu_trace.csv",
+      "gpu_trace_sha256": "26d8cc0ce1641ba81841491f566281f1d28540b578b126134d0e602059ce9b7b"
+    }
+  ],
+  "multi_gpu_runs": [
+    {
+      "method": "DACE",
+      "profile": "three_gpu_high_throughput",
+      "gpu_ids": [
+        0,
+        3,
+        6
+      ],
+      "num_gpus": 3,
+      "batch_size_per_gpu": 56,
+      "max_audio_seconds": 16.0,
+      "cpu_threads_per_worker": 16,
+      "rows": 3025,
+      "shard_rows": [
+        1006,
+        1011,
+        1008
+      ],
+      "shard_effective_audio_seconds": [
+        12403.13,
+        12403.13,
+        12398.12
+      ],
+      "called_second": 3025,
+      "average_model_forwards": 2.0,
+      "correct": 2427,
+      "accuracy": 0.8023140495867769,
+      "macro_f1": 0.7673313285004356,
+      "whole_process_wall_seconds": 705.1872356459498,
+      "whole_process_wall_hms": "0:11:45",
+      "throughput_rows_per_second": 4.289640888393431,
+      "speedup_over_single_gpu_high_throughput": 2.7509020194378744,
+      "merged_timing_seconds": {
+        "split_manifest": 2.4834744930267334,
+        "parallel_inference_wall": 701.9623260498047,
+        "merge_and_validation": 0.08887791633605957,
+        "total_to_summary_write": 704.6916971206665,
+        "slowest_shard_internal_total": 689.0222433023155
+      },
+      "slowest_shard_internal_timing_seconds": {
+        "input_and_frozen_parameter_validation": 1.5513903126120567,
+        "processor_base_primary_load": 33.56875214353204,
+        "primary_forward": 325.24272260814905,
+        "secondary_adapter_and_head_load": 2.8033481426537037,
+        "secondary_forward": 325.799438405782,
+        "frozen_calibration_and_dialogue_smoothing": 0.0053055137395858765,
+        "artifact_write": 0.05125732347369194,
+        "total": 689.0222433023155
+      },
+      "gpu": {
+        "name": "NVIDIA GeForce RTX 3090",
+        "driver_version": "575.64",
+        "total_memory_mib_per_gpu": 24576.0,
+        "baseline_device_used_mib": {
+          "0": 36.0,
+          "3": 15.0,
+          "6": 15.0
+        },
+        "peak_device_used_mib": {
+          "0": 22150.0,
+          "3": 21023.0,
+          "6": 23385.0
+        },
+        "maximum_peak_device_used_gib": 22.8369140625,
+        "torch_peak_allocated_bytes": {
+          "0": 16034253824,
+          "3": 15737120256,
+          "6": 15960357888
+        },
+        "maximum_torch_peak_allocated_gib": 14.933062553405762,
+        "monitor_interval_seconds": 0.5,
+        "monitor_samples_per_gpu": 1037,
+        "peak_utilization_percent": 100.0,
+        "peak_power_w": {
+          "0": 363.32,
+          "3": 363.18,
+          "6": 335.6
+        }
+      },
+      "prediction_sha256": "0c82d87c858ee78ca81c86401ca6b24051d3d430e36b890bc05c8ee7677e548d",
+      "gpu_trace": "inference_efficiency_3025/dace_3gpu_high_throughput_gpu_trace.csv",
+      "gpu_trace_sha256": "fd1471fbb69fd928f851dc0757e826ae8c93e5b1df64ded24ab1ac1fbe8c27db"
+    },
+    {
+      "method": "ACCR",
+      "profile": "three_gpu_high_throughput",
+      "gpu_ids": [
+        0,
+        3,
+        6
+      ],
+      "num_gpus": 3,
+      "batch_size_per_gpu": 56,
+      "max_audio_seconds": 16.0,
+      "cpu_threads_per_worker": 16,
+      "rows": 3025,
+      "shard_rows": [
+        1006,
+        1011,
+        1008
+      ],
+      "shard_effective_audio_seconds": [
+        12403.13,
+        12403.13,
+        12398.12
+      ],
+      "called_second": 1197,
+      "average_model_forwards": 1.3957024793388428,
+      "correct": 2423,
+      "accuracy": 0.80099173553719,
+      "macro_f1": 0.7649567984949264,
+      "whole_process_wall_seconds": 500.9339154958725,
+      "whole_process_wall_hms": "0:08:21",
+      "throughput_rows_per_second": 6.038720690344084,
+      "speedup_over_single_gpu_high_throughput": 2.769635397016118,
+      "merged_timing_seconds": {
+        "split_manifest": 2.4100406169891357,
+        "parallel_inference_wall": 498.18602228164673,
+        "merge_and_validation": 0.08971166610717773,
+        "total_to_summary_write": 500.8576560020447,
+        "slowest_shard_internal_total": 484.4578669592738
+      },
+      "slowest_shard_internal_timing_seconds": {
+        "input_and_frozen_parameter_validation": 1.3168593719601631,
+        "processor_base_primary_load": 26.941447474062443,
+        "primary_forward": 324.2017140388489,
+        "routing": 0.0007974393665790558,
+        "secondary_adapter_and_head_load": 5.0605582147836685,
+        "secondary_forward": 126.88988676667213,
+        "frozen_calibration_and_dialogue_smoothing": 0.00528789684176445,
+        "artifact_write": 0.04131575673818588,
+        "total": 484.4578669592738
+      },
+      "gpu": {
+        "name": "NVIDIA GeForce RTX 3090",
+        "driver_version": "575.64",
+        "total_memory_mib_per_gpu": 24576.0,
+        "baseline_device_used_mib": {
+          "0": 36.0,
+          "3": 15.0,
+          "6": 15.0
+        },
+        "peak_device_used_mib": {
+          "0": 22150.0,
+          "3": 22665.0,
+          "6": 22815.0
+        },
+        "maximum_peak_device_used_gib": 22.2802734375,
+        "torch_peak_allocated_bytes": {
+          "0": 15826816000,
+          "3": 15740298752,
+          "6": 15775499264
+        },
+        "maximum_torch_peak_allocated_gib": 14.73987102508545,
+        "monitor_interval_seconds": 0.5,
+        "monitor_samples_per_gpu": 732,
+        "peak_utilization_percent": 100.0,
+        "peak_power_w": {
+          "0": 362.59,
+          "3": 363.45,
+          "6": 333.66
+        }
+      },
+      "prediction_sha256": "3064c5e6be1b5c8027ab83f0d3a40ce8eb45c6b002d90cf2853ae344d3cecf23",
+      "gpu_trace": "inference_efficiency_3025/accr_3gpu_high_throughput_gpu_trace.csv",
+      "gpu_trace_sha256": "e884bd3f17856d09dcde24e3e196b75ae1ac5e6777b90810bf0cda090cdf1da7"
+    }
+  ]
+}

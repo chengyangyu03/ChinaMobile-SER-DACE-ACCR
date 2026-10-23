@@ -1,0 +1,6 @@
+{
+  "checked": 28583,
+  "byte_identical": 28583,
+  "different": 0,
+  "note": "Current files have distinct inodes; original preprocessing summary recorded hardlinks."
+}

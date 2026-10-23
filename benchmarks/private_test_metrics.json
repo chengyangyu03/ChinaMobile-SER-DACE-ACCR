@@ -1,0 +1,55 @@
+{
+  "dataset": {
+    "status": "private, not redistributed",
+    "protocol": "held-out chronological test split",
+    "period": "2025-07",
+    "timestamp_min": "2025-07-01 00:00:17",
+    "timestamp_max": "2025-07-30 15:14:29",
+    "rows": 3025,
+    "dialogues": 1442,
+    "label_counts": {
+      "A": 1302,
+      "B": 1340,
+      "C": 383
+    },
+    "label_percent": {
+      "A": 43.0413,
+      "B": 44.2975,
+      "C": 12.6612
+    },
+    "source_table_sha256": "11f277869b35c6ef8d0970b30ced1fa34896c12f31b4ee6a7f95c9766039d9a0"
+  },
+  "DACE": {
+    "full_name": "Dual-Adapter Calibrated Ensemble",
+    "correct": 2427,
+    "accuracy": 0.8023140495867769,
+    "macro_f1": 0.7673313285004356,
+    "confusion_matrix_A_B_C": [
+      [1104, 194, 4],
+      [168, 1096, 76],
+      [12, 144, 227]
+    ],
+    "large_model_forwards_per_row": 2.0,
+    "prediction_sha256": "8debfedf6bb2ebac67ee8b8c38a8fe55d28611d33d474e6784fcd7dfea4ce037",
+    "independent_audit": true
+  },
+  "ACCR": {
+    "full_name": "Adaptive Confidence-Calibrated Routing",
+    "correct": 2422,
+    "accuracy": 0.8006611570247933,
+    "macro_f1": 0.7647142943034074,
+    "confusion_matrix_A_B_C": [
+      [1105, 193, 4],
+      [169, 1091, 80],
+      [13, 144, 226]
+    ],
+    "called_second": 1196,
+    "call_rate": 0.3953719008264463,
+    "average_large_model_forwards": 1.3953719008264462,
+    "minimum_large_model_forwards": 1,
+    "maximum_large_model_forwards": 2,
+    "prediction_sha256": "c71a5297b88ff43aac4f0e2b21f33bc3d7d0c68efa633b644cf4fd054bf84f4a",
+    "independent_audit": true,
+    "scientific_status": "transparent Pareto-cost derivative reported after the full two-forward target result; routing parameters were frozen on nested validation"
+  }
+}

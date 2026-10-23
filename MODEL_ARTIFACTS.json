@@ -1,0 +1,26 @@
+{
+  "model_id": "chengyangyu03/ChinaMobile-SER-DACE-ACCR",
+  "revision": "master",
+  "artifacts": [
+    {
+      "path": "models/shared/primary_adapter/adapter_model.safetensors",
+      "size": 207559816,
+      "sha256": "c08de732239d03f798a123ad6743b1eca7b5903dbeed52eb75fe8cfc5edb09fd"
+    },
+    {
+      "path": "models/shared/primary_adapter/classifier_head.pt",
+      "size": 4385503,
+      "sha256": "99e2a95d85096f62ebf24c26849e450eb3375a67054f386892724c240e753fa7"
+    },
+    {
+      "path": "models/shared/secondary_adapter/adapter_model.safetensors",
+      "size": 207559816,
+      "sha256": "1a1234f39db14a83753f62980040dd5de5802815a09c77e01b8d81fbe6e09462"
+    },
+    {
+      "path": "models/shared/secondary_adapter/classifier_head.pt",
+      "size": 4385503,
+      "sha256": "2dc6c7f8cf9fc46d6694ad13174023c545c236f2b094d082077fe1995ae77bb0"
+    }
+  ]
+}

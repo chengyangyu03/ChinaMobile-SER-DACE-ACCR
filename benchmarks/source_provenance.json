@@ -1,0 +1,60 @@
+{
+  "modelscope_repository": "chengyangyu03/ChinaMobile-SER-DACE-ACCR",
+  "source_files": [
+    {
+      "source": "train_qwen2audio_directhead_student_valonly_abc.py",
+      "published": "training/train_qwen2audio_directhead_student_valonly_abc.py",
+      "sha256": "0f782afd7a6bc695ae304f64182c3f23fbb00d626041561132a6fc44669d28c9",
+      "modified": false
+    },
+    {
+      "source": "train_qwen2audio_mvef_student_valonly_abc.py",
+      "published": "training/train_qwen2audio_mvef_student_valonly_abc.py",
+      "sha256": "0df3c3bdd65a4936f419da2f95085295816bd5ffb54d949d88862a14e7053a3d",
+      "modified": false
+    },
+    {
+      "source": "eval_qwen2audio_directhead_components_valonly_abc.py",
+      "published": "training/eval_qwen2audio_directhead_components_valonly_abc.py",
+      "sha256": "5297f75147fcadb7ed3fdf4b9dd66e64167e88a2696123955cbb01b310c390aa",
+      "modified": false
+    },
+    {
+      "source": "select_qwen2audio_omni_nested_jointlogistic_valonly_abc.py",
+      "published": "training/select_qwen2audio_omni_nested_jointlogistic_valonly_abc.py",
+      "sha256": "3000cb1dbe95350edc37140e4a6db903bdb0ed6cef3bc8480b22802325614897",
+      "modified": false
+    },
+    {
+      "source": "select_qwen2audio_budget_cascade_nested_valonly_abc.py",
+      "published": "training/select_qwen2audio_budget_cascade_nested_valonly_abc.py",
+      "sha256": "d63dfa51af6a8dc8c07d9e7a353f9be828386e4157ce505b2d7497946d6a64d7",
+      "modified": false
+    },
+    {
+      "source": "select_qwen2audio_nested_calibration_dialogue_valonly_abc.py",
+      "published": "training/select_qwen2audio_nested_calibration_dialogue_valonly_abc.py",
+      "sha256": "7d0faf5c6dfe0da94ac15439163d092e3cfbaaa7459854a6cf3ce4575e7ef2e9",
+      "modified": false
+    },
+    {
+      "source": "select_qwen2audio_nested_logistic_dialogue_valonly_abc.py",
+      "published": "training/select_qwen2audio_nested_logistic_dialogue_valonly_abc.py",
+      "sha256": "c2b4887f4669a58ab96f0fdb0058983245f8627259a539267bf41e7585d664e4",
+      "modified": false
+    },
+    {
+      "source": "select_qwen2audio_two_adapter_pair_diagnostic_valonly_abc.py",
+      "published": "training/select_qwen2audio_two_adapter_pair_diagnostic_valonly_abc.py",
+      "sha256": "4fdd2d40cd53bdc4e04ea19df9cdc0f351ef4dcb888478e0aeb011a7e2e14768",
+      "modified": false
+    },
+    {
+      "source": "prepare_timesplit_abc_data.py",
+      "published": "data/prepare_timesplit_abc_data.py",
+      "source_sha256": "11eff54a9f39d2782d40ad108c5e1bc818fe75b437b41d58b8fe20f783d79d67",
+      "published_sha256": "11eff54a9f39d2782d40ad108c5e1bc818fe75b437b41d58b8fe20f783d79d67",
+      "modified": false
+    }
+  ]
+}
